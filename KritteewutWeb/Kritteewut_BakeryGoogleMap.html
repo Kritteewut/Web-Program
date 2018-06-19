@@ -1,0 +1,87 @@
+<html>
+    <head>
+      <title>Kritteewut_BakeryMap</title>
+      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+      <meta charset="utf-8">
+
+      <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 90%;
+          width: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
+
+      <style>
+    
+                body 
+                    {background-image: url("https://www.sketchuptextureclub.com/public/texture_m/0019-fabriano-watercolor-paper-texture-seamless.jpg");}
+   
+      </style>
+
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <script src="script.js"></script>
+  <title>CSS MenuMaker</title>
+
+    </head>
+
+    <body>
+
+        <!-- Menu Bar -->
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='http://localhost:81/FoodKritteewutloginweb/Kritteewut_BakeryHomepage.html'>Home</a></li>
+                <li><a href='http://localhost:81/FoodKritteewutloginweb/Kritteewut_BakeryInformation.html'>Infor</a></li>
+                <li><a href='http://localhost:81/FoodKritteewutloginweb/index.html'>Login</a></li>
+                <li class='active'><a href='http://localhost:81/FoodKritteewutloginweb/Kritteewut_BakeryGoogleMap.html'>Map</a></li>
+            </ul>
+        </div>
+
+
+      <div id="map"></div>
+
+      <script>
+        // This example displays a map with the language and region set
+        // to Japan. These settings are specified in the HTML script element
+        // when loading the Google Maps JavaScript API.
+        // Setting the language shows the map in the language of your choice.
+        // Setting the region biases the geocoding results to that region.
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: {lat: 13.621895, lng: 100.526758}
+          });
+          var myMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(13.621895, 100.526758),
+            draggable: true
+          });
+
+          google.maps.event.addListener(myMarker, 'dragend', function (evt) {
+          document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
+          });
+
+          google.maps.event.addListener(myMarker, 'dragstart', function (evt) {
+          document.getElementById('current').innerHTML = '<p>Currently dragging marker...</p>';
+          });
+
+          map.setCenter(myMarker.position);
+          myMarker.setMap(map);
+          }
+      </script>
+
+      <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&language=th&region=TH"async defer>
+      
+      </script>
+    </body>
+  </html>
